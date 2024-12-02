@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<h1>Users List</h1>
+  <table border="1">
+  <tr>
+  <th>Unique Id</th>
+  <th>Name</th>
+  <th>Email</th>
+  <th>Age</th>
+  <th>Actions</th>
+  </tr>
+  <% data.forEach(element => { %>
+  <tr>
+  <td><%= element.userUniqueId %></td>
+  <td><%= element.userName %></td>
+  <td><%= element.userEmail %></td>
+  <td><%= element.userAge %></td>
+  <td>
+  <form action="/delete" method="post">
+  <input type="hidden" value="<%= element.userUniqueId %>" name="userUniqueId"/>
+  <button type="submit">Delete</button>
+  
+  </form>
+  </td>
+  </tr>
+ <% }); %>
+  </table>
+  <h2>New User List</h2>
+  <form action="/" method="POST">
+  <input type="number" name="userUniqueId" placeholder="User UniqueId" required/>
+  <input type="text" name="userName" placeholder="User Name" required/>
+  <input type="email" name="userEmail" placeholder="User Email" required/>
+  <input type="number" name="userAge" placeholder="User Age" required/>
+   <button type="submit">Add User</button>
+  </form>
+  <h3>Update Use</h3>
+  <form action="/update" method="POST">
+  <input type="number" name="userUniqueId" placeholder="User UniqueId" required/>
+  <input type="text" name="userName" placeholder="User Name" required/>
+  <input type="email" name="userEmail" placeholder="User Email" required/>
+  <input type="number" name="userAge" placeholder="User Age" required/>
+   <button type="submit">Update User</button>
+  </form>
+</body>
+</html>
